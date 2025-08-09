@@ -21,10 +21,10 @@ GROUP BY activity_date
 ORDER BY activity_date
 -- Exercise3
 SELECT manufacturer,
-CONCAT( '$', CEILING(SUM (total_sales)/1000000), ' ', 'million') AS sale
+CONCAT( '$', ROUND(SUM (total_sales)/1000000,0), ' ', 'million') AS sale
 FROM pharmacy_sales
 GROUP BY manufacturer
-ORDER BY sale DESC, manufacturer 
+ORDER BY SUM (total_sales)/1000000 DESC, manufacturer 
 -- Exercise4
 SELECT EXTRACT(month FROM submit_date) AS mth,
 product_id AS product, 
@@ -47,4 +47,10 @@ FROM employees
 WHERE EXTRACT(month from joining_date) BETWEEN 1 AND 7
 GROUP BY EXTRACT(month from joining_date)
 -- Exercise9
+SELECT POSITION('a' in first_name) AS position
+FROM worker
+WHERE first_name = 'Amitah'
 -- Exercise10
+SELECT SUBSTRING(title, LENGTH(winery)+2, 4)
+FROM winemag_p2
+WHERE country = 'Macedonia'
