@@ -17,7 +17,10 @@ ELSE 'No'
 END AS triangle 
 FROM Triangle
 -- Exercise3
-
+SELECT 
+ROUND(100.0 * SUM (CASE WHEN call_category IS NULL OR call_category = 'n/a' then 1 else 0 END)/ COUNT(*),1) 
+AS uncategorised_call_pct
+FROM callers
 -- Exercisse4
 --C1:
 SELECT name FROM Customer
