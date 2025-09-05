@@ -14,3 +14,18 @@ WHERE EXTRACT(YEAR FROM transaction_date) = 2022
 GROUP BY category, product) AS ranked_spending 
 WHERE ranking <=2
 ORDER BY category, ranking
+--Exercise3
+SELECT COUNT(*) AS policy_holder_count FROM (
+SELECT policy_holder_id FROM callers 
+GROUP BY policy_holder_id
+HAVING COUNT(policy_holder_id) >=3) a
+--Exercise4
+SELECT a.page_id FROM pages AS a
+LEFT JOIN page_likes AS b
+ON a.page_id = b.page_id 
+WHERE b.page_id IS NULL
+ORDER BY a.page_id
+--Exercise5 (Khó quá e chưa hiểu vs chưa làm được ạ)
+--Exercise6
+
+
